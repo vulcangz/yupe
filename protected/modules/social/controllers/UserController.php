@@ -56,8 +56,8 @@ class UserController extends \yupe\components\controllers\FrontController
                     $module = Yii::app()->getModule('user');
 
                     $redirect = (Yii::app()->getUser()->isSuperUser() && $module->loginAdminSuccess)
-                        ? [$module->loginAdminSuccess]
-                        : [$module->loginSuccess];
+                        ? $module->loginAdminSuccess
+                        : $module->loginSuccess;
 
                     Yii::app()->authenticationManager->setBadLoginCount(Yii::app()->getUser(), 0);
 
